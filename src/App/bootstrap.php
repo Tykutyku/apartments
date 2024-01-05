@@ -8,4 +8,10 @@ use Framework\App;
 
 $app = new App();
 
+$app->get('/');
+$app->get('about/team');
+
+
+dd($app);
+
 return $app;
