@@ -6,17 +6,17 @@ namespace Framework;
 
 class Router
 {
-    private array $routes=[];
+    private array $routes = [];
 
     public function add(string $method, string $path, array $controller)
     {
         $path = $this->normalizePath($path);
 
-       $this->routes[] = [
-        'path' => $path,
-        'method' => strtoupper($method),
-        'controller'=>$controller
-       ];
+        $this->routes[] = [
+            'path' => $path,
+            'method' => strtoupper($method),
+            'controller' => $controller
+        ];
     }
     #getting path, delete first and last '/' if exist adding '/' for both sites
     #for index.php reduce second '/' 
@@ -29,22 +29,23 @@ class Router
         return $path;
     }
 
-    public function dispatch(string $path, string $method)
+    public function dispatch(string $path, string $method, Container $container = null)
     {
         $path = $this->normalizePath($path);
         $method = strtoupper($method);
 
-        foreach($this->routes as $route)
-        {
+        foreach ($this->routes as $route) {
             if (
-              !preg_match("#^{$route['path']}$#", $path) ||
-              $route['method'] !== $method
-              ){
-              continue;
+                !preg_match("#^{$route['path']}$#", $path) ||
+                $route['method'] !== $method
+            ) {
+                continue;
             }
             [$class, $function] = $route['controller'];
 
-            $controllerInstance = new $class;
+            $controllerInstance = $container ?
+                $container->resolve($class) :
+                new $class;
 
             $controllerInstance->{$function}();
         }
