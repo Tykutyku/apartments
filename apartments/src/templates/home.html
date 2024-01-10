@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="main main--about">
+    <div class="welcome-section">
+        <h2>Welcome to Students Apartments</h2>
+        <p class="sub-heading">Where Quality Meets Comfort</p>
+        <p class="description">
+            Our apartment complex is designed to provide a premium living experience for students. <br>
+        Here's a bit about us:</p>
+    </div>
+    <div class="projects">
+        {% for news_item in news[:3] %}
+            <div class="project-card">
+                <img src="{{ news_item.image_url }}" alt="{{ news_item.title }}" class="project-card__image">
+                <div class="project-card__meta">
+                    <h3 class="project-card__name">{{ news_item.title }}</h3>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+    <section class="main main--contact">
+        <div class="welcome-section">
+            <h2>Login</h2>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-form">
+                <form method="POST" action="{{ url_for('login') }}" class="contact-form">
+                    {{ form.hidden_tag() }}
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        {{ form.email(class="form-control") }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        {{ form.password(class="form-control") }}
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+
+                <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a>.</p>
+            </div>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash">{{ messages[0] }}</div>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </section>
+{% endblock %}

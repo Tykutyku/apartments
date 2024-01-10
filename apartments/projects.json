@@ -1,0 +1,44 @@
+{
+  "tenants": [
+    {
+      "name": "Johnny",
+      "surname": "Depp",
+      "room_number": 101,
+      "rental_dates": {
+        "start_date": "2023-01-01",
+        "end_date": "2024-12-31"
+      },
+      "email": "johnny.depp@gmail.com"
+    },
+    {
+      "name": "Alex",
+      "surname": "Danvers",
+      "room_number": 102,
+      "rental_dates": {
+        "start_date": "2023-02-15",
+        "end_date": "2024-12-15"
+      },
+      "email": "alex.danvers@gmail.com"
+    },
+    {
+      "name": "Bob",
+      "surname": "Johanson",
+      "room_number": 103,
+      "rental_dates": {
+        "start_date": "2022-03-10",
+        "end_date": "2025-11-30"
+      },
+      "email": "bob.johanson@gmail.com"
+    },
+    {
+      "name": "Mario",
+      "surname": "Luigi",
+      "room_number": 104,
+      "rental_dates": {
+        "start_date": "2023-03-10",
+        "end_date": "2025-11-30"
+      },
+      "email": "mario.luigi@gmail.com"
+    }
+  ]
+}
